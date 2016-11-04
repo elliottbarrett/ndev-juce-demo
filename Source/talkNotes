@@ -1,0 +1,46 @@
+JUCE:
+
+Component: 
+	Base class for all UI components
+
+Synthesiser: 
+	Base class for a musical device that can play sounds.
+
+SynthesiserSound: 
+	Describes one of the sounds that a Synthesiser can play.
+
+	A synthesiser can contain one or more sounds, and a sound can choose which midi notes and channels can trigger it.
+
+	The SynthesiserSound is a passive class that just describes what the sound is - the actual audio rendering for a sound is done by a SynthesiserVoice. This allows more than one SynthesiserVoice to play the same sound at the same time.
+
+SynthesiserVoice:
+	Represents a voice that a Synthesiser can use to play a SynthesiserSound.
+
+	A voice plays a single sound at a time, and a synthesiser holds an array of voices so that it can play polyphonically.
+
+MidiMessageCollector:
+	Collects incoming realtime MIDI messages and turns them into blocks suitable for processing by a block-based audio callback.
+
+	The class can also be used as either a MidiKeyboardStateListener or a MidiInputCallback so it can easily use a midi input or keyboard component as its source.
+
+
+AudioSource streams output of Synthesiser, Synth instantiated inside it
+MidiInputCallback to receive messages (keep reference to MidiInput pointer)
+
+
+AUDIO:
+All sound comprised of waves
+	Amplitude -> volume
+	Frequency -> pitch
+	Shape of wave -> tone (Sine, Saw, Square, Triangle vs. Piano, Violin, Organ)
+
+Nyquist-Shannon Sampling Theorem
+	To perfectly reconstruct a signal from discrete samples, sample at 2x rate of highest frequency component
+	Humans generally hear 20 Hz - 20,000Hz, worsening with age.. 
+	Sample at 44,100 Hz just in case someone has super ears
+	Neil Young's music player is snake oil
+
+Bit-depth
+	Each sample is not exact -- bits per sample determines how accurate your playback can be
+	Low bits per sample increases noise, we usually pick 16, 24 or 32 bps
+

@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2015
+Project("{E3551146-E389-2B29-2C2D-E10D598BF261}") = "KeyLearner", "KeyLearner.vcxproj", "{779060DC-FC86-9DF9-AC0D-A03A64F06D9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{779060DC-FC86-9DF9-AC0D-A03A64F06D9F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{779060DC-FC86-9DF9-AC0D-A03A64F06D9F}.Debug|Win32.Build.0 = Debug|Win32
+		{779060DC-FC86-9DF9-AC0D-A03A64F06D9F}.Release|Win32.ActiveCfg = Release|Win32
+		{779060DC-FC86-9DF9-AC0D-A03A64F06D9F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
