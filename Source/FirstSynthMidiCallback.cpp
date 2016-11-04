@@ -1,9 +1,9 @@
 /*
   ==============================================================================
 
-    FirstSynthMidiCallback.cpp
-    Created: 3 Nov 2016 11:49:46pm
-    Author:  Elliott Barrett
+	FirstSynthMidiCallback.cpp
+	Created: 3 Nov 2016 11:49:46pm
+	Author:  Elliott Barrett
 
   ==============================================================================
 */
@@ -42,7 +42,7 @@ private:
 
 	void handleIncomingMidiMessage(MidiInput* source, const MidiMessage& message)
 	{
-        MidiMessageCollector::handleIncomingMidiMessage(source, message);
+		MidiMessageCollector::handleIncomingMidiMessage(source, message);
 	}
 };
 

@@ -1,2 +1,4 @@
 Builds/MacOSX/debug
 Builds/MacOSX/KeyLearner.xcodeproj/xcuserdata
+Source/__MainComponentOLD.cpp
+Builds/MacOSX/KeyLearner.xcodeproj/project.xcworkspace/*

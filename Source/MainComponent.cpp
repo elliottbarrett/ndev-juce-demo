@@ -16,8 +16,8 @@ public:
 	{
 		setSize (800, 600);
 		setFramesPerSecond (60);
-        
-    }
+		
+	}
 
 	// Destructor
 	~MainContentComponent()
@@ -28,8 +28,8 @@ public:
 	// Methods
 	void update() override
 	{
-        
-	}
+		
+
 
 	void paint (Graphics& g) override
 	{
@@ -43,11 +43,11 @@ public:
 
 private:
 	// Members
-    FirstSynthAudioManager firstSynthAudioManager;
+	FirstSynthAudioManager firstSynthAudioManager;
 
 	// Methods
-    
-    // Boilerplate
+	
+	// Boilerplate
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };
 

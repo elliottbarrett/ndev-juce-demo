@@ -1,9 +1,9 @@
 /*
   ==============================================================================
 
-    DemoUIComponent.cpp
-    Created: 4 Nov 2016 2:16:25am
-    Author:  Elliott Barrett
+	DemoUIComponent.cpp
+	Created: 4 Nov 2016 2:16:25am
+	Author:  Elliott Barrett
 
   ==============================================================================
 */
@@ -15,7 +15,7 @@
 
 class DemoUIComponent : public Component
 {
-    
+	
 };
 
 #endif

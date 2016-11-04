@@ -67,7 +67,7 @@ public:
 		midiMessageBox.setColour (TextEditor::shadowColourId, Colour (0x16000000));
 
 
-    }
+	}
 
 	// Destructor
 	~MainContentComponent()
@@ -80,7 +80,7 @@ public:
 	// Methods
 	void update() override
 	{
-        
+		
 	}
 
 	void paint (Graphics& g) override
@@ -115,22 +115,22 @@ private:
 	int lastInputIndex;
 	bool isAddingFromMidiInput;
 	
-	    // Testing
-	    MidiScroller midiScroller;
-	    FirstSynthAudioSource audioSource;
+		// Testing
+		MidiScroller midiScroller;
+		FirstSynthAudioSource audioSource;
 
 	// Methods
 	static String getMidiMessageDescription (const MidiMessage& m)
 	{
-		if (m.isNoteOn())           return "Note on "  + MidiMessage::getMidiNoteName (m.getNoteNumber(), true, true, 3);
-		if (m.isNoteOff())          return "Note off " + MidiMessage::getMidiNoteName (m.getNoteNumber(), true, true, 3);
-		if (m.isProgramChange())    return "Program change " + String (m.getProgramChangeNumber());
-		if (m.isPitchWheel())       return "Pitch wheel " + String (m.getPitchWheelValue());
-		if (m.isAftertouch())       return "After touch " + MidiMessage::getMidiNoteName (m.getNoteNumber(), true, true, 3) +  ": " + String (m.getAfterTouchValue());
+		if (m.isNoteOn())		   return "Note on "  + MidiMessage::getMidiNoteName (m.getNoteNumber(), true, true, 3);
+		if (m.isNoteOff())		  return "Note off " + MidiMessage::getMidiNoteName (m.getNoteNumber(), true, true, 3);
+		if (m.isProgramChange())	return "Program change " + String (m.getProgramChangeNumber());
+		if (m.isPitchWheel())	   return "Pitch wheel " + String (m.getPitchWheelValue());
+		if (m.isAftertouch())	   return "After touch " + MidiMessage::getMidiNoteName (m.getNoteNumber(), true, true, 3) +  ": " + String (m.getAfterTouchValue());
 		if (m.isChannelPressure())  return "Channel pressure " + String (m.getChannelPressureValue());
-		if (m.isAllNotesOff())      return "All notes off";
-		if (m.isAllSoundOff())      return "All sound off";
-		if (m.isMetaEvent())        return "Meta event";
+		if (m.isAllNotesOff())	  return "All notes off";
+		if (m.isAllSoundOff())	  return "All sound off";
+		if (m.isMetaEvent())		return "Meta event";
 
 		if (m.isController())
 		{
@@ -187,7 +187,7 @@ private:
 	// MidiKeyboardStateListener methods
 	void handleNoteOn (MidiKeyboardState*, int midiChannel, int midiNoteNumber, float velocity) override
 	{
-        //synth.noteOn(midiChannel, midiNoteNumber, velocity);
+		//synth.noteOn(midiChannel, midiNoteNumber, velocity);
 		if (! isAddingFromMidiInput)
 		{
 			MidiMessage m (MidiMessage::noteOn (midiChannel, midiNoteNumber, velocity));
@@ -198,7 +198,7 @@ private:
 
 	void handleNoteOff (MidiKeyboardState*, int midiChannel, int midiNoteNumber, float velocity) override
 	{
-        //synth.noteOff(midiChannel, midiNoteNumber, velocity, velocity);
+		//synth.noteOff(midiChannel, midiNoteNumber, velocity, velocity);
 		if (! isAddingFromMidiInput)
 		{
 			MidiMessage m (MidiMessage::noteOff (midiChannel, midiNoteNumber));

@@ -26,7 +26,7 @@ public:
 		MidiMessageSequence tempoSequence;
 		MidiMessageSequence keySigSequence;
 		midiFile.findAllTimeSigEvents(timeSigSequence);
-        midiFile.findAllTempoEvents(tempoSequence);
+		midiFile.findAllTempoEvents(tempoSequence);
 		midiFile.findAllKeySigEvents(keySigSequence);
 
 		for (int i=0; i < numTracks; i++)
@@ -49,9 +49,9 @@ public:
 				}
 				else if (tempMessage->isTempoMetaEvent())
 				{
-                    double tickLength = tempMessage->getTempoMetaEventTickLength(timeFormat);
-                    double secondsPerQuarterNote = tempMessage->getTempoSecondsPerQuarterNote();
-                    int asdf = 9;
+					double tickLength = tempMessage->getTempoMetaEventTickLength(timeFormat);
+					double secondsPerQuarterNote = tempMessage->getTempoSecondsPerQuarterNote();
+					int asdf = 9;
 				}
 			}
 		}
@@ -59,7 +59,7 @@ public:
 
 	~MidiScroller()
 	{
-        delete midiFileInputStream;
+		delete midiFileInputStream;
 	}
 private:
 	// Members
