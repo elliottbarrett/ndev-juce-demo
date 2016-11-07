@@ -44,8 +44,15 @@ public:
 	void noteOff (int midiChannel, int midiNoteNumber, float velocity, bool allowTailOff) override
 	{
 		Synthesiser::noteOff(midiChannel, midiNoteNumber, velocity, allowTailOff);
-	}
-
+    }
+    
+    void handleController (int midiChannel, int controllerNumber, int controllerValue) override
+    {
+        for (int i=0; i < getNumVoices(); i++)
+        {
+            this->getVoice(i)->controllerMoved(controllerNumber, controllerValue);
+        }
+    }
 private:
 	// Members
 		

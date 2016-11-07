@@ -3,20 +3,22 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "FirstSynthAudioManager.cpp"
+#include "DemoUIComponent.cpp"
 
 /*
 	This component lives inside our window, and this is where you should put all
 	your controls and content.
 */
-class MainContentComponent   :	public AnimatedAppComponent
+class MainContentComponent : public Component
 {
 public:
 	// Constructor
-	MainContentComponent()
+    MainContentComponent() :
+        demoUI(&audioManager)
 	{
+        setOpaque(true);
 		setSize (800, 600);
-		setFramesPerSecond (60);
-		
+        addAndMakeVisible(demoUI);
 	}
 
 	// Destructor
@@ -26,24 +28,21 @@ public:
 	}
 
 	// Methods
-	void update() override
-	{
-		
-
-
-	void paint (Graphics& g) override
-	{
-		g.fillAll (Colours::grey);
-	}
-
 	void resized() override
 	{
-
+        Rectangle<int> area (getLocalBounds());
+        demoUI.setBounds(area);
 	}
+    
+    void paint(Graphics& g) override
+    {
+        g.fillAll(Colours::grey);
+    }
 
 private:
 	// Members
-	FirstSynthAudioManager firstSynthAudioManager;
+	FirstSynthAudioManager audioManager;
+    DemoUIComponent demoUI;
 
 	// Methods
 	

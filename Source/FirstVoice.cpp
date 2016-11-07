@@ -20,13 +20,14 @@ struct FirstVoice : public SynthesiserVoice
 public:
 	// Constructor
 	FirstVoice()
-	:   angleDelta(0),
-		volume(0.4),
+    :   currentMidiNoteNumber(-1),
+        angleDelta(0),
 		currentAngle(0),
-		currentMidiNoteNumber(-1),
+        volume(0.4),
 		isTailingOff(false),
 		tailOffFactor(1),
-		tailOffDecay(0.99999)
+		tailOffDecay(0.99995),
+        normalizedControllerPos(0.5)
 	{
 
 	}
@@ -92,6 +93,8 @@ public:
 
 	void controllerMoved(int controllerNumber, int newControllerValue)
 	{
+        // Sine/square wave mixing function
+        normalizedControllerPos = ((double)newControllerValue) / 127;
 	}
 
 private:
@@ -103,6 +106,7 @@ private:
 	bool isTailingOff;
 	double tailOffFactor;
 	double tailOffDecay;
+    double normalizedControllerPos;
 	
 	// Methods
 	void renderNextBlock (AudioBuffer<float>& outputBuffer,
@@ -111,8 +115,9 @@ private:
 	{
 		while (numSamples > 0)
 		{
-			float sinValue = sin(currentAngle);
-			float currentSample = (float) (sin (currentAngle) * (volume * tailOffFactor));
+			float currentSampleSin = (float) (sin (currentAngle) * (volume * tailOffFactor));
+            float currentSampleSquare = (currentSampleSin > 0 ? volume * tailOffFactor : -volume * tailOffFactor);
+            float currentSample = (normalizedControllerPos * currentSampleSin) + ((1 - normalizedControllerPos) * currentSampleSquare);
 			if (isTailingOff)
 			{
 				currentSample *= tailOffFactor;
@@ -120,8 +125,10 @@ private:
 			}
 			
 			for (int i = outputBuffer.getNumChannels(); --i >= 0;)
-				outputBuffer.addSample (i, startSample, currentSample);
-			
+            {
+                outputBuffer.addSample (i, startSample, currentSample);
+            }
+            
 			currentAngle += angleDelta;
 			startSample++;
 			numSamples--;
