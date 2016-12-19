@@ -2,4 +2,4 @@
 
 Demo project for a presentation on the JUCE framework (https://www.juce.com/).
 
-Includes a simple MIDI synth
+Includes a simple MIDI synth and some basic UI elements.
