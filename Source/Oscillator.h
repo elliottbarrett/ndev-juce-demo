@@ -13,7 +13,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-#define TAU 6.2831853072
+#define TAU (2 * float_Pi)
 
 enum OscillatorType
 {

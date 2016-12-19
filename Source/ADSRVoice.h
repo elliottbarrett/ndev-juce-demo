@@ -14,7 +14,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Oscillator.h"
 
-#define TAU 6.2831853072
+#define TAU (2 * float_Pi)
 #define NUM_VOICES 10
 
 

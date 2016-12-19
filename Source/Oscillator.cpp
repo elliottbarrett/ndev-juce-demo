@@ -46,6 +46,10 @@ float Oscillator::getNextValue()
     }
     switch (type)
     {
+        case OT_INVALID:
+        case OT_NONE:
+            value = 0;
+            break;
         case OT_SINE:
             value = sin(currentAngle);
             break;
@@ -53,17 +57,22 @@ float Oscillator::getNextValue()
             value = (sin(currentAngle) > 0 ? 1 : -1);
             break;
         case OT_SAW:
-            value = (2 * fmod(currentAngle, TAU) / TAU) - 1;
+            value = (2 * currentAngle / TAU) - 1;
             break;
         case OT_TRIANGLE:
-            value = 0; // TODO
+            float cur = currentAngle / TAU;
+            if (cur <= 0.25) {
+                value = cur / 0.25;
+            } else if (cur <= 0.5) {
+                value = 1.0 - ((cur - 0.25) / 0.25);
+            } else if (cur <= 0.75) {
+                value = 0.0 - ((cur - 0.5) / 0.25);
+            } else {
+                value = -1.0 + ((cur - 0.75) / 0.25);
+            }
             break;
-        default:
-            value = 0;
-            break;
-            
     }
-    currentAngle += angleDelta;
+    currentAngle = fmod(currentAngle + angleDelta, TAU);
     return value;
 }
 
