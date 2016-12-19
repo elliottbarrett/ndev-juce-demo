@@ -57,17 +57,20 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS := \
+  $(JUCE_OBJDIR)/Globals_d339a991.o \
+  $(JUCE_OBJDIR)/ADSRComponent_e465fb5c.o \
+  $(JUCE_OBJDIR)/ADSRVoice_b52a4211.o \
+  $(JUCE_OBJDIR)/Oscillator_8a6cfe29.o \
+  $(JUCE_OBJDIR)/MicInputAudioSource_5b92b92f.o \
   $(JUCE_OBJDIR)/DemoUIComponent_60b95067.o \
+  $(JUCE_OBJDIR)/FirstFMVoice_ebbfcf04.o \
   $(JUCE_OBJDIR)/FirstSound_95339248.o \
   $(JUCE_OBJDIR)/FirstSynthAudioManager_28fb658c.o \
   $(JUCE_OBJDIR)/FirstSynthAudioSource_b6ace666.o \
   $(JUCE_OBJDIR)/FirstSynthesiser_da9f287a.o \
-  $(JUCE_OBJDIR)/FirstSynthMidiCallback_522ccd9b.o \
   $(JUCE_OBJDIR)/FirstVoice_c47ee0eb.o \
-  $(JUCE_OBJDIR)/MidiScroller_7ffbc584.o \
   $(JUCE_OBJDIR)/MainComponent_a6ffb4a5.o \
   $(JUCE_OBJDIR)/Main_90ebc5c2.o \
-  $(JUCE_OBJDIR)/BinaryData_ce4232d4.o \
   $(JUCE_OBJDIR)/juce_audio_basics_6b797ca1.o \
   $(JUCE_OBJDIR)/juce_audio_devices_a742c38b.o \
   $(JUCE_OBJDIR)/juce_audio_formats_5a29c68a.o \
@@ -104,9 +107,39 @@ strip:
 	@echo Stripping KeyLearner
 	-@$(STRIP) --strip-unneeded $(JUCE_OUTDIR)/$(TARGET)
 
+$(JUCE_OBJDIR)/Globals_d339a991.o: ../../Source/Globals.cpp
+	-@mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling Globals.cpp"
+	@$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/ADSRComponent_e465fb5c.o: ../../Source/ADSRComponent.cpp
+	-@mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling ADSRComponent.cpp"
+	@$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/ADSRVoice_b52a4211.o: ../../Source/ADSRVoice.cpp
+	-@mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling ADSRVoice.cpp"
+	@$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/Oscillator_8a6cfe29.o: ../../Source/Oscillator.cpp
+	-@mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling Oscillator.cpp"
+	@$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/MicInputAudioSource_5b92b92f.o: ../../Source/MicInputAudioSource.cpp
+	-@mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling MicInputAudioSource.cpp"
+	@$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
+
 $(JUCE_OBJDIR)/DemoUIComponent_60b95067.o: ../../Source/DemoUIComponent.cpp
 	-@mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling DemoUIComponent.cpp"
+	@$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
+
+$(JUCE_OBJDIR)/FirstFMVoice_ebbfcf04.o: ../../Source/FirstFMVoice.cpp
+	-@mkdir -p $(JUCE_OBJDIR)
+	@echo "Compiling FirstFMVoice.cpp"
 	@$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/FirstSound_95339248.o: ../../Source/FirstSound.cpp
@@ -129,19 +162,9 @@ $(JUCE_OBJDIR)/FirstSynthesiser_da9f287a.o: ../../Source/FirstSynthesiser.cpp
 	@echo "Compiling FirstSynthesiser.cpp"
 	@$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
 
-$(JUCE_OBJDIR)/FirstSynthMidiCallback_522ccd9b.o: ../../Source/FirstSynthMidiCallback.cpp
-	-@mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling FirstSynthMidiCallback.cpp"
-	@$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
-
 $(JUCE_OBJDIR)/FirstVoice_c47ee0eb.o: ../../Source/FirstVoice.cpp
 	-@mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling FirstVoice.cpp"
-	@$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/MidiScroller_7ffbc584.o: ../../Source/MidiScroller.cpp
-	-@mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling MidiScroller.cpp"
 	@$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/MainComponent_a6ffb4a5.o: ../../Source/MainComponent.cpp
@@ -152,11 +175,6 @@ $(JUCE_OBJDIR)/MainComponent_a6ffb4a5.o: ../../Source/MainComponent.cpp
 $(JUCE_OBJDIR)/Main_90ebc5c2.o: ../../Source/Main.cpp
 	-@mkdir -p $(JUCE_OBJDIR)
 	@echo "Compiling Main.cpp"
-	@$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
-
-$(JUCE_OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp
-	-@mkdir -p $(JUCE_OBJDIR)
-	@echo "Compiling BinaryData.cpp"
 	@$(CXX) $(JUCE_CXXFLAGS) -o "$@" -c "$<"
 
 $(JUCE_OBJDIR)/juce_audio_basics_6b797ca1.o: ../../JuceLibraryCode/juce_audio_basics.cpp

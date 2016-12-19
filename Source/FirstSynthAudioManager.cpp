@@ -7,38 +7,26 @@
 
   ==============================================================================
 */
+#include "FirstSynthAudioManager.h"
 
-#ifndef FIRSTSYNTHAUDIOMANAGER_H_INCLUDED
-#define FIRSTSYNTHAUDIOMANAGER_H_INCLUDED
-
-#include "../JuceLibraryCode/JuceHeader.h"
-#include "FirstSynthAudioSource.cpp"
-
-class FirstSynthAudioManager
+FirstSynthAudioManager::FirstSynthAudioManager()
 {
-public:
-	FirstSynthAudioManager()
-	{
-		deviceManager = new AudioDeviceManager();
-		deviceManager->initialise(2, 2, 0, true, String::empty, 0);
-		deviceManager->addAudioCallback(&audioSourcePlayer);
-		
-		synthAudioSource = new FirstSynthAudioSource();
-		audioSourcePlayer.setSource(synthAudioSource);
-		deviceManager->addMidiInputCallback(String::empty, &(synthAudioSource->midiCollector));
-	}
-	
-	~FirstSynthAudioManager()
-	{
-		
-	}
-private:
-	// Members
-	ScopedPointer<AudioDeviceManager> deviceManager;
-	AudioSourcePlayer audioSourcePlayer;
-	ScopedPointer<FirstSynthAudioSource> synthAudioSource;
+	deviceManager = new AudioDeviceManager();
+	deviceManager->initialise(2, 2, 0, true, String::empty, 0);
+	deviceManager->addAudioCallback(&synthAudioSourcePlayer);
+    
+	synthAudioSource = new FirstSynthAudioSource(&synth);
+	synthAudioSourcePlayer.setSource(synthAudioSource);
+	deviceManager->addMidiInputCallback(String::empty, &(synthAudioSource->midiCollector));
+        
+    return;
+    inputAudioSource = new MicInputAudioSource(deviceManager);
+    inputAudioSourcePlayer.setSource(inputAudioSource);
+    deviceManager->addAudioCallback(&inputAudioSourcePlayer);
+}
 
-	// Methods
-};
-
-#endif
+// Methods
+void FirstSynthAudioManager::setSynthType(SynthType t)
+{
+    synth.setSynthType(t);
+}

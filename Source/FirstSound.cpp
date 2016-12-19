@@ -8,41 +8,14 @@
   ==============================================================================
 */
 
-#ifndef FIRSTSOUND_H_INCLUDED
-#define FIRSTSOUND_H_INCLUDED
+#include "FirstSound.h"
 
-#include "../JuceLibraryCode/JuceHeader.h"
-
-class FirstSound : public SynthesiserSound
+bool FirstSound::appliesToNote (int midiNoteNumber)
 {
-public:
-	// Constructor
-	FirstSound()
-	{
+	return true;
+}
 
-	}
-
-	// Destructor
-	~FirstSound()
-	{
-
-	}
-
-	// Methods
-	bool appliesToNote (int midiNoteNumber)
-	{
-		return true;
-	}
-
-	bool appliesToChannel (int midiChannel)
-	{
-		return true;
-	}
-
-private:
-	// Members
-
-	// Methods
-};
-
-#endif
+bool FirstSound::appliesToChannel (int midiChannel)
+{
+	return true;
+}

@@ -8,6 +8,12 @@
     <Filter Include="KeyLearner\Source">
       <UniqueIdentifier>{CD9E5C36-50D8-2A95-A8F4-9F57D329ACB4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="KeyLearner\Source\ADSR">
+      <UniqueIdentifier>{E30330AB-6F38-1856-0A20-07090EC2B3E6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KeyLearner\Source\AudioInput">
+      <UniqueIdentifier>{B5EC3341-152E-6E84-AE3C-9CA1787DCD7C}</UniqueIdentifier>
+    </Filter>
     <Filter Include="KeyLearner\Source\DemoUI">
       <UniqueIdentifier>{9DD755F0-8B98-49FB-B93E-69A0216AACE8}</UniqueIdentifier>
     </Filter>
@@ -373,8 +379,26 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Globals.cpp">
+      <Filter>KeyLearner\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ADSRComponent.cpp">
+      <Filter>KeyLearner\Source\ADSR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ADSRVoice.cpp">
+      <Filter>KeyLearner\Source\ADSR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Oscillator.cpp">
+      <Filter>KeyLearner\Source\ADSR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MicInputAudioSource.cpp">
+      <Filter>KeyLearner\Source\AudioInput</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\DemoUIComponent.cpp">
       <Filter>KeyLearner\Source\DemoUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\FirstFMVoice.cpp">
+      <Filter>KeyLearner\Source\FirstSynth</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\FirstSound.cpp">
       <Filter>KeyLearner\Source\FirstSynth</Filter>
@@ -388,14 +412,8 @@
     <ClCompile Include="..\..\Source\FirstSynthesiser.cpp">
       <Filter>KeyLearner\Source\FirstSynth</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\FirstSynthMidiCallback.cpp">
-      <Filter>KeyLearner\Source\FirstSynth</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\FirstVoice.cpp">
       <Filter>KeyLearner\Source\FirstSynth</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\MidiScroller.cpp">
-      <Filter>KeyLearner\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MainComponent.cpp">
       <Filter>KeyLearner\Source</Filter>
@@ -2086,9 +2104,6 @@
     <ClCompile Include="..\..\..\JUCE\modules\juce_video\juce_video.mm">
       <Filter>Juce Modules\juce_video</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
-      <Filter>Juce Library Code</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\juce_audio_basics.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
@@ -2133,6 +2148,42 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Globals.h">
+      <Filter>KeyLearner\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ADSRComponent.h">
+      <Filter>KeyLearner\Source\ADSR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ADSRVoice.h">
+      <Filter>KeyLearner\Source\ADSR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Oscillator.h">
+      <Filter>KeyLearner\Source\ADSR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MicInputAudioSource.h">
+      <Filter>KeyLearner\Source\AudioInput</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DemoUIComponent.h">
+      <Filter>KeyLearner\Source\DemoUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FirstSynthesiser.h">
+      <Filter>KeyLearner\Source\FirstSynth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FirstSynthAudioSource.h">
+      <Filter>KeyLearner\Source\FirstSynth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FirstSynthAudioManager.h">
+      <Filter>KeyLearner\Source\FirstSynth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FirstSound.h">
+      <Filter>KeyLearner\Source\FirstSynth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\FirstFMVoice.h">
+      <Filter>KeyLearner\Source\FirstSynth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Enums.h">
+      <Filter>KeyLearner\Source\FirstSynth</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\JUCE\modules\juce_audio_basics\buffers\juce_AudioChannelSet.h">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
     </ClInclude>
@@ -3963,17 +4014,11 @@
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
-      <Filter>Juce Library Code</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\FurElise.mid">
-      <Filter>KeyLearner</Filter>
-    </None>
     <None Include="..\..\..\JUCE\modules\juce_audio_formats\codecs\flac\Flac Licence.txt">
       <Filter>Juce Modules\juce_audio_formats\codecs\flac</Filter>
     </None>

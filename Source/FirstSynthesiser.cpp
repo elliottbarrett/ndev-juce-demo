@@ -7,55 +7,54 @@
 
   ==============================================================================
 */
-#ifndef FIRSTSYNTHESISER_H_INCLUDED
-#define FIRSTSYNTHESISER_H_INCLUDED
+// #include "../JuceLibraryCode/JuceHeader.h"
+// #include "FirstVoice.h"
+// #include "FirstFMVoice.h"
+// #include "ADSRVoice.h"
+// #include "FirstSound.h"
+// #include "Enums.h"
 
-#include "../JuceLibraryCode/JuceHeader.h"
-#include "FirstVoice.cpp"
-#include "FirstSound.cpp"
-#include "FirstSynthMidiCallback.cpp"
+#include "FirstSynthesiser.h"
+#include "FirstSound.h"
+#include "FirstVoice.h"
+#include "FirstFMVoice.h"
+#include "ADSRVoice.h"
 
-class FirstSynthesiser : public Synthesiser
-{
-public:
 	// Constructor
-	FirstSynthesiser()
-	{
-		SynthesiserSound *sound = new FirstSound();
-		addSound(sound);
-		for (int i=0; i < 10; i++)
-		{
-			SynthesiserVoice *voice = new FirstVoice();
-			addVoice(voice);
-		}
-	}
-	// Destructor
-	~FirstSynthesiser()
-	{
-		
-	}
+FirstSynthesiser::FirstSynthesiser()
+{
+	SynthesiserSound *sound = new FirstSound();
+	addSound(sound);
+    setSynthType(ST_ADSR);
+}
 
-	// Methods
-	void noteOn(const int midiChannel, const int midiNoteNumber, const float velocity) override
-	{
-		Synthesiser::noteOn(midiChannel, midiNoteNumber, velocity);
-	}
-
-	void noteOff (int midiChannel, int midiNoteNumber, float velocity, bool allowTailOff) override
-	{
-		Synthesiser::noteOff(midiChannel, midiNoteNumber, velocity, allowTailOff);
-    }
-    
-    void handleController (int midiChannel, int controllerNumber, int controllerValue) override
+// Methods
+void FirstSynthesiser::handleController (int midiChannel, int controllerNumber, int controllerValue)
+{
+    for (int i=0; i < getNumVoices(); i++)
     {
-        for (int i=0; i < getNumVoices(); i++)
+        this->getVoice(i)->controllerMoved(controllerNumber, controllerValue);
+    }
+}
+
+void FirstSynthesiser::setSynthType(SynthType t)
+{
+    clearVoices();
+    for (int i=0; i < NUM_VOICES; i++)
+    {
+        switch (t)
         {
-            this->getVoice(i)->controllerMoved(controllerNumber, controllerValue);
+            case ST_SQUARE_SINE:
+                addVoice(new FirstVoice());
+                break;
+            case ST_FM:
+                addVoice(new FirstFMVoice());
+                break;
+            case ST_ADSR:
+                addVoice(new ADSRVoice());
+                break;
+            default:
+                break;
         }
     }
-private:
-	// Members
-		
-	// Methods
-};
-#endif
+}

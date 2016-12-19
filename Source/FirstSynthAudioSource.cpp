@@ -7,48 +7,45 @@
 
   ==============================================================================
 */
+#include "FirstSynthAudioSource.h"
+#include "FirstSound.h"
 
-#ifndef FIRSTSYNTHAUDIOSOURCE_H_INCLUDED
-#define FIRSTSYNTHAUDIOSOURCE_H_INCLUDED
-
-#include "../JuceLibraryCode/JuceHeader.h"
-#include "FirstSynthesiser.cpp"
-
-struct FirstSynthAudioSource : public AudioSource
+FirstSynthAudioSource::FirstSynthAudioSource(FirstSynthesiser *s) : synth(s)
 {
-public:
-	FirstSynthAudioSource()
-	{
-		synth.clearSounds();
-		synth.addSound(new FirstSound());
-	}
-	
-	void prepareToPlay(int samplesPerBlockExpected, double sampleRate)
-	{
-		midiCollector.reset(sampleRate);
-		synth.setCurrentPlaybackSampleRate(sampleRate);
-	}
-	
-	void releaseResources()
-	{
-		
-	}
-	
-	void getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill)
-	{
-		// Is this needed?
-		bufferToFill.clearActiveBufferRegion();
-		
-		// Fill a buffer with midi messages
-		MidiBuffer incomingMidi;
-		midiCollector.removeNextBlockOfMessages(incomingMidi, bufferToFill.numSamples);
-		
-		// Tell the synth to render those messages into the buffer
-		synth.renderNextBlock(*bufferToFill.buffer, incomingMidi, 0, bufferToFill.numSamples);
-	}
+	synth->clearSounds();
+	synth->addSound(new FirstSound());
+    
+    auto devices = MidiInput::getDevices();
+    if (devices.isEmpty())
+    {
+        hasMidiInput = false;
+        return;
+    }
+    
+    midiInput = MidiInput::openDevice(0, &midiCollector);
+    midiInput->start();
+}
 
-	FirstSynthesiser synth;
-	FirstSynthMidiCallback midiCollector;
-};
+void FirstSynthAudioSource::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
+{
+	midiCollector.reset(sampleRate);
+	synth->setCurrentPlaybackSampleRate(sampleRate);
+}
 
-#endif
+void FirstSynthAudioSource::getNextAudioBlock(const AudioSourceChannelInfo &bufferToFill)
+{
+	bufferToFill.clearActiveBufferRegion();
+    
+	// Fill a buffer with midi messages
+	MidiBuffer incomingMidi;
+	midiCollector.removeNextBlockOfMessages(incomingMidi, bufferToFill.numSamples);
+	
+	// Tell the synth to render those messages into the buffer
+	synth->renderNextBlock(*bufferToFill.buffer, incomingMidi, 0, bufferToFill.numSamples);
+}
+
+void FirstSynthAudioSource::releaseResources()
+{
+    midiInput->stop();
+    delete midiInput;
+}

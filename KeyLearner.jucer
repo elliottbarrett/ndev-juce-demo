@@ -5,11 +5,41 @@
               jucerVersion="4.3.0">
   <MAINGROUP id="qu3Rto" name="KeyLearner">
     <GROUP id="{E5A9E08E-4E46-0544-3844-A701C839B722}" name="Source">
+      <FILE id="s5W56K" name="Globals.cpp" compile="1" resource="0" file="Source/Globals.cpp"/>
+      <FILE id="J3iZIv" name="Globals.h" compile="0" resource="0" file="Source/Globals.h"/>
+      <GROUP id="{C7674481-C5A2-DE83-677D-3A3C2EA70535}" name="ADSR">
+        <FILE id="FnwfgK" name="ADSRComponent.cpp" compile="1" resource="0"
+              file="Source/ADSRComponent.cpp"/>
+        <FILE id="O30xWc" name="ADSRComponent.h" compile="0" resource="0" file="Source/ADSRComponent.h"/>
+        <FILE id="cP3Gxe" name="ADSRVoice.cpp" compile="1" resource="0" file="Source/ADSRVoice.cpp"/>
+        <FILE id="S3CIQk" name="ADSRVoice.h" compile="0" resource="0" file="Source/ADSRVoice.h"/>
+        <FILE id="GNPOgp" name="Oscillator.cpp" compile="1" resource="0" file="Source/Oscillator.cpp"/>
+        <FILE id="iAxd4o" name="Oscillator.h" compile="0" resource="0" file="Source/Oscillator.h"/>
+      </GROUP>
+      <GROUP id="{93D9AEE8-D73A-867A-0BE1-DE85B6A88BB4}" name="AudioInput">
+        <FILE id="un361E" name="MicInputAudioSource.h" compile="0" resource="0"
+              file="Source/MicInputAudioSource.h"/>
+        <FILE id="c7nvnM" name="MicInputAudioSource.cpp" compile="1" resource="0"
+              file="Source/MicInputAudioSource.cpp"/>
+      </GROUP>
       <GROUP id="{2B4014C3-D590-07C8-7226-A0DD2776D6F9}" name="DemoUI">
+        <FILE id="C6vfPD" name="DemoUIComponent.h" compile="0" resource="0"
+              file="Source/DemoUIComponent.h"/>
         <FILE id="oFnkjC" name="DemoUIComponent.cpp" compile="1" resource="0"
               file="Source/DemoUIComponent.cpp"/>
       </GROUP>
       <GROUP id="{A8C6F6FA-34B1-6673-2196-993B4FF5183A}" name="FirstSynth">
+        <FILE id="PQF2E1" name="FirstSynthesiser.h" compile="0" resource="0"
+              file="Source/FirstSynthesiser.h"/>
+        <FILE id="fzOeJG" name="FirstSynthAudioSource.h" compile="0" resource="0"
+              file="Source/FirstSynthAudioSource.h"/>
+        <FILE id="AjGFhC" name="FirstSynthAudioManager.h" compile="0" resource="0"
+              file="Source/FirstSynthAudioManager.h"/>
+        <FILE id="XaXBc2" name="FirstSound.h" compile="0" resource="0" file="Source/FirstSound.h"/>
+        <FILE id="Z7grSz" name="FirstFMVoice.h" compile="0" resource="0" file="Source/FirstFMVoice.h"/>
+        <FILE id="fuVjSH" name="Enums.h" compile="0" resource="0" file="Source/Enums.h"/>
+        <FILE id="VkOrwt" name="FirstFMVoice.cpp" compile="1" resource="0"
+              file="Source/FirstFMVoice.cpp"/>
         <FILE id="vzeV8N" name="FirstSound.cpp" compile="1" resource="0" file="Source/FirstSound.cpp"/>
         <FILE id="TW1EwG" name="FirstSynthAudioManager.cpp" compile="1" resource="0"
               file="Source/FirstSynthAudioManager.cpp"/>
@@ -17,17 +47,12 @@
               file="Source/FirstSynthAudioSource.cpp"/>
         <FILE id="fnzsBM" name="FirstSynthesiser.cpp" compile="1" resource="0"
               file="Source/FirstSynthesiser.cpp"/>
-        <FILE id="uVk6d0" name="FirstSynthMidiCallback.cpp" compile="1" resource="0"
-              file="Source/FirstSynthMidiCallback.cpp"/>
         <FILE id="LISzRa" name="FirstVoice.cpp" compile="1" resource="0" file="Source/FirstVoice.cpp"/>
       </GROUP>
-      <FILE id="kHZeVY" name="MidiScroller.cpp" compile="1" resource="0"
-            file="Source/MidiScroller.cpp"/>
       <FILE id="WrlWmL" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="RwBhMx" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
     </GROUP>
-    <FILE id="WG9Cji" name="FurElise.mid" compile="0" resource="1" file="FurElise.mid"/>
   </MAINGROUP>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX">

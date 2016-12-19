@@ -2,8 +2,8 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "FirstSynthAudioManager.cpp"
-#include "DemoUIComponent.cpp"
+#include "FirstSynthAudioManager.h"
+#include "DemoUIComponent.h"
 
 /*
 	This component lives inside our window, and this is where you should put all
